@@ -1,7 +1,4 @@
 import { combineReducers } from "redux";
+import gifs from "./gifs";
 
-const placeHolder = (state = {}, action) => {
-  return state;
-};
-
-export default combineReducers({ placeHolder });
+export default combineReducers({ gifs });

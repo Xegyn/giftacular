@@ -1,0 +1,9 @@
+@import "../variables";
+
+:local(.image-container) {
+  margin: $spacer-sm;
+}
+:local(.image) {
+  max-width: 100%;
+  height: auto;
+}

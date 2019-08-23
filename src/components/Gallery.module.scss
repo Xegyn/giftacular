@@ -1,0 +1,7 @@
+:local(.gallery) {
+  display: flex;
+  flex-wrap: wrap;
+  flex-grow: 1;
+  justify-content: space-between;
+  align-items: center;
+}
