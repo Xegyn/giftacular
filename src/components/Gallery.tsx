@@ -8,7 +8,13 @@ const Gallery: React.FC = ({ gifs }: any) => {
     <div className="container">
       <div className={styles.gallery}>
         {gifs.map(gif => {
-          return <Gif key={gif.id} url={gif.images.preview_gif.url} />;
+          return (
+            <Gif
+              key={gif.id}
+              url={gif.images.preview_gif.url}
+              alt={gif.title}
+            />
+          );
         })}
       </div>
     </div>

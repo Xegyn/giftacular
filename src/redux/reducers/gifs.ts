@@ -1,21 +1,27 @@
-import { RECEIVE_TRENDING } from "../actions";
+import { RECEIVE_TRENDING, REQUEST_TRENDING } from "../actions";
 
 type state = {
   isFetching: boolean;
   items: number[];
+  offset: number;
 };
 
 const initialState: state = {
   isFetching: false,
-  items: []
+  items: [],
+  offset: 0
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
+    case REQUEST_TRENDING:
+      return { ...state, isFetching: true };
     case RECEIVE_TRENDING:
       return {
         ...state,
-        items: action.gifs
+        isFetching: false,
+        items: state.items.concat(action.gifs),
+        offset: action.offset
       };
     default:
       return state;

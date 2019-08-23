@@ -11,13 +11,22 @@ export const RECEIVE_TRENDING = "RECEIVE_TRENDING";
 function receiveTrending(json) {
   return {
     type: RECEIVE_TRENDING,
-    gifs: json.data
+    gifs: json.data,
+    offset: json.pagination.offset + json.pagination.count
   };
 }
 
-export function fetchTrending(): any {
-  return function(dispatch) {
-    const params = `api_key=${process.env.REACT_APP_GIPHY_API_KEY}`;
+export function fetchGifs(): any {
+  return function(dispatch, getState) {
+    dispatch(requestTrending());
+
+    const limit = 100;
+    const state = getState();
+    const offset = state.gifs.offset;
+
+    const params = `api_key=${
+      process.env.REACT_APP_GIPHY_API_KEY
+    }&limit=${limit}&offset=${offset}`;
     const url = `${process.env.REACT_APP_GIPHY_URL}/gifs/trending?${params}`;
 
     return fetch(url)
