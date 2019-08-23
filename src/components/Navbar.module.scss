@@ -1,0 +1,36 @@
+@import "../variables";
+
+:local(.navbar) {
+  padding: 0 $spacer;
+  background-color: $primary;
+  color: white;
+  height: 4rem;
+  align-content: center;
+
+  :global(.container) {
+    height: 100%;
+    display: flex;
+
+    > * {
+      display: inline-block;
+      margin: $spacer-sm;
+    }
+
+    :global(.logo) {
+      display: flex;
+      align-items: center;
+    }
+
+    :global(.search-text) {
+      margin-top: $spacer;
+      margin-bottom: $spacer;
+      padding-left: $spacer-sm;
+      padding-right: $spacer-sm;
+    }
+
+    :global(.search-button) {
+      margin-top: $spacer;
+      margin-bottom: $spacer;
+    }
+  }
+}
