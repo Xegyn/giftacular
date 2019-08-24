@@ -1,18 +1,23 @@
 import React from "react";
 import { connect } from "react-redux";
-import Navbar from "./components/Navbar";
 import Gallery from "./components/Gallery";
-import store from "./redux/store";
+import Navbar from "./components/Navbar";
 import { fetchGifs } from "./redux/actions";
+import store from "./redux/store";
+import FullScreenGif from "./components/FullScreenGif";
 
 type Props = {
   isFetching: boolean;
+  fullScreen: boolean;
+  fullScreenGif: any;
 };
 
 const FETCH_MORE_THRESHOLD = 500;
 
 class App extends React.Component {
-  props: any;
+  constructor(public props: Props) {
+    super(props);
+  }
 
   componentDidMount() {
     store.dispatch(fetchGifs());
@@ -44,7 +49,11 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <main>
-          <Gallery />
+          {this.props.fullScreen ? (
+            <FullScreenGif gif={this.props.fullScreenGif} />
+          ) : (
+            <Gallery />
+          )}
         </main>
       </div>
     );
@@ -52,7 +61,17 @@ class App extends React.Component {
 }
 
 const mapStateToProps = state => {
-  return { isFetching: state.gifs.isFetching };
+  let fullScreenGif = null;
+
+  if (state.view.index != null) {
+    fullScreenGif = state.gifs.items[state.view.index];
+  }
+
+  return {
+    isFetching: state.gifs.isFetching,
+    fullScreen: state.view.fullScreen,
+    fullScreenGif
+  };
 };
 
 export default connect(

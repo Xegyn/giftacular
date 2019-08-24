@@ -37,4 +37,17 @@ export function fetchGifs(): any {
   };
 }
 
-export default requestTrending;
+export const OPEN_FULL_SCREEN = "OPEN_FULL_SCREEN";
+export function openFullScreen(index: number) {
+  return {
+    type: OPEN_FULL_SCREEN,
+    index
+  };
+}
+
+export const CLOSE_FULL_SCREEN = "CLOSE_FULL_SCREEN";
+export function closeFullScreen() {
+  return {
+    type: CLOSE_FULL_SCREEN
+  };
+}

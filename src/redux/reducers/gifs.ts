@@ -1,12 +1,12 @@
 import { RECEIVE_TRENDING, REQUEST_TRENDING } from "../actions";
 
-type state = {
+type State = {
   isFetching: boolean;
   items: number[];
   offset: number;
 };
 
-const initialState: state = {
+const initialState: State = {
   isFetching: false,
   items: [],
   offset: 0

@@ -7,10 +7,11 @@ const Gallery: React.FC = ({ gifs }: any) => {
   return (
     <div className="container">
       <div className={styles.gallery}>
-        {gifs.map(gif => {
+        {gifs.map((gif, index) => {
           return (
             <Gif
               key={gif.id}
+              index={index}
               url={gif.images.preview_gif.url}
               alt={gif.title}
             />

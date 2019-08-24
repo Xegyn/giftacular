@@ -3,6 +3,7 @@
 :local(.image-container) {
   margin: $spacer-sm;
   max-width: 200px;
+  cursor: pointer;
 }
 :local(.image) {
   max-width: 100%;
