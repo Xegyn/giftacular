@@ -10,7 +10,7 @@ const Gallery: React.FC = ({ gifs }: any) => {
         {gifs.map((gif, index) => {
           return (
             <Gif
-              key={gif.id}
+              key={index}
               index={index}
               url={gif.images.preview_gif.url}
               alt={gif.title}

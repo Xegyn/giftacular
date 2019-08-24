@@ -1,7 +1,6 @@
 @import "../variables";
 
 :local(.navbar) {
-  padding: 0 $spacer;
   background-color: $primary;
   color: white;
   height: 4rem;
@@ -15,6 +14,10 @@
     > * {
       display: inline-block;
       margin: $spacer-sm;
+
+      &:first-child {
+        margin-left: 0;
+      }
     }
 
     :global(.logo) {

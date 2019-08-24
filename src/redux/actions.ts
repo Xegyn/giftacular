@@ -23,17 +23,31 @@ export function fetchGifs(): any {
     const limit = 100;
     const state = getState();
     const offset = state.gifs.offset;
+    const searching = state.gifs.searchString.length > 0;
+    const baseUrl = searching
+      ? `${process.env.REACT_APP_GIPHY_URL}/gifs/search`
+      : `${process.env.REACT_APP_GIPHY_URL}/gifs/trending`;
 
-    const params = `api_key=${
-      process.env.REACT_APP_GIPHY_API_KEY
-    }&limit=${limit}&offset=${offset}`;
-    const url = `${process.env.REACT_APP_GIPHY_URL}/gifs/trending?${params}`;
+    let params = `api_key=${process.env.REACT_APP_GIPHY_API_KEY}&limit=${limit}&offset=${offset}`;
+    if (searching) {
+      params += `&q=${state.gifs.searchString}`;
+    }
+
+    const url = `${baseUrl}?${params}`;
 
     return fetch(url)
       .then(response => response.json())
       .then(response => {
         dispatch(receiveTrending(response));
       });
+  };
+}
+
+export const SET_NEW_SEARCH = "SET_NEW_SEARCH";
+export function setNewSearch(searchString: string) {
+  return {
+    type: SET_NEW_SEARCH,
+    searchString
   };
 }
 
