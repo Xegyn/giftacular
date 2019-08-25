@@ -3,7 +3,11 @@ import { connect } from "react-redux";
 import styles from "./Gallery.module.scss";
 import Gif from "./Gif";
 
-const Gallery: React.FC = ({ gifs }: any) => {
+type GalleryProps = {
+  gifs: any[];
+};
+
+const Gallery: React.FC<GalleryProps> = ({ gifs }: GalleryProps) => {
   return (
     <div className="container">
       <div className={styles.gallery}>

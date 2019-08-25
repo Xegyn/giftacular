@@ -1,5 +1,4 @@
 import React from "react";
-import { connect } from "react-redux";
 import styles from "./Spinner.module.scss";
 
 const Spinner: React.FC = () => {
@@ -10,7 +9,4 @@ const Spinner: React.FC = () => {
   );
 };
 
-export default connect(
-  null,
-  null
-)(Spinner);
+export default Spinner;

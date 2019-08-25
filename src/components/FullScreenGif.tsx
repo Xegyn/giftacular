@@ -1,10 +1,15 @@
 import React from "react";
-import { connect } from "react-redux";
 import { closeFullScreen } from "../redux/actions";
 import store from "../redux/store";
 import styles from "./FullScreenGif.module.scss";
 
-const FullScreenGif: React.FC = ({ gif }: any) => {
+type FullScreenGifProps = {
+  gif: any;
+};
+
+const FullScreenGif: React.FC<FullScreenGifProps> = ({
+  gif
+}: FullScreenGifProps) => {
   return (
     <div className="container">
       <button
@@ -23,7 +28,4 @@ const FullScreenGif: React.FC = ({ gif }: any) => {
   );
 };
 
-export default connect(
-  null,
-  null
-)(FullScreenGif);
+export default FullScreenGif;
