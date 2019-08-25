@@ -30,7 +30,7 @@ export function fetchGifs(): any {
 
     let params = `api_key=${process.env.REACT_APP_GIPHY_API_KEY}&limit=${limit}&offset=${offset}`;
     if (searching) {
-      params += `&q=${state.gifs.searchString}`;
+      params += `&q=${escape(state.gifs.searchString)}`;
     }
 
     const url = `${baseUrl}?${params}`;

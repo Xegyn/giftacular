@@ -1,4 +1,5 @@
 @import "./variables";
+@import "./spinner";
 
 html,
 body {
@@ -24,6 +25,29 @@ body {
   margin: 0;
 }
 
-button {
+button.btn {
   background-color: $primary-light;
+  border: 1px solid grey;
+  padding: $spacer-sm;
+  font-weight: bold;
+  cursor: pointer;
+  border-radius: $radius-sm;
+  transition: background-color 100ms;
+
+  &:hover {
+    background-color: darken($primary-light, 10%);
+  }
+
+  &.b-0 {
+    border: 0;
+  }
+}
+
+input.control {
+  border: 1px solid grey;
+  border-radius: $radius-sm;
+
+  &.b-0 {
+    border: 0;
+  }
 }

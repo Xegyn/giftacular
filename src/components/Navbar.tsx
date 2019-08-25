@@ -1,7 +1,7 @@
 import React from "react";
 import store from "../redux/store";
 import styles from "./Navbar.module.scss";
-import { setNewSearch, fetchGifs } from "../redux/actions";
+import { setNewSearch, fetchGifs, closeFullScreen } from "../redux/actions";
 
 type State = {
   searchString: string;
@@ -36,6 +36,7 @@ class Navbar extends React.Component {
   }
 
   searchGifs() {
+    store.dispatch(closeFullScreen());
     store.dispatch(setNewSearch(this.state.searchString));
     store.dispatch(fetchGifs());
   }
@@ -49,7 +50,7 @@ class Navbar extends React.Component {
           </div>
           <input
             type="text"
-            className="search-text"
+            className="search-text control b-0"
             placeholder="Search for..."
             value={this.state.searchString}
             onChange={this.handleChange}
@@ -57,7 +58,7 @@ class Navbar extends React.Component {
           />
           <button
             type="button"
-            className="search-button"
+            className="search-button btn b-0"
             onClick={this.searchGifs}
           >
             Search

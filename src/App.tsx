@@ -1,10 +1,11 @@
 import React from "react";
 import { connect } from "react-redux";
+import FullScreenGif from "./components/FullScreenGif";
 import Gallery from "./components/Gallery";
 import Navbar from "./components/Navbar";
+import Spinner from "./components/Spinner";
 import { fetchGifs } from "./redux/actions";
 import store from "./redux/store";
-import FullScreenGif from "./components/FullScreenGif";
 
 type Props = {
   isFetching: boolean;
@@ -54,6 +55,7 @@ class App extends React.Component {
           ) : (
             <Gallery />
           )}
+          {this.props.isFetching && <Spinner />}
         </main>
       </div>
     );

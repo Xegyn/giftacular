@@ -9,7 +9,7 @@ const FullScreenGif: React.FC = ({ gif }: any) => {
     <div className="container">
       <button
         type="button"
-        className={styles["back-button"]}
+        className={`${styles["back-button"]} btn`}
         onClick={() => store.dispatch(closeFullScreen())}
       >
         &lt; Back
