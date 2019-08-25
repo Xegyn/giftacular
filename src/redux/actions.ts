@@ -18,10 +18,15 @@ function receiveTrending(json) {
 
 export function fetchGifs(): any {
   return function(dispatch, getState) {
-    dispatch(requestTrending());
-
     const limit = 100;
     const state = getState();
+
+    if (state.isFetching) {
+      return false;
+    }
+
+    dispatch(requestTrending());
+
     const offset = state.gifs.offset;
     const searching = state.gifs.searchString.length > 0;
     const baseUrl = searching

@@ -1,3 +1,4 @@
+import debounce from "lodash-es/debounce";
 import React from "react";
 import { connect } from "react-redux";
 import FullScreenGif from "./components/FullScreenGif";
@@ -18,6 +19,8 @@ const FETCH_MORE_THRESHOLD = 500;
 class App extends React.Component {
   constructor(public props: Props) {
     super(props);
+
+    this.dispatchFetchGifs = debounce(this.dispatchFetchGifs, 400, { leading: true, trailing: false });
   }
 
   componentDidMount() {
@@ -28,15 +31,15 @@ class App extends React.Component {
 
   fetchGifsIfNeeded() {
     if (this.shouldFetchGifs()) {
-      store.dispatch(fetchGifs());
+      this.dispatchFetchGifs();
     }
   }
 
-  shouldFetchGifs() {
-    if (this.props.isFetching) {
-      return false;
-    }
+  dispatchFetchGifs() {
+    store.dispatch(fetchGifs());
+  }
 
+  shouldFetchGifs() {
     return (
       window.innerHeight + document.documentElement.scrollTop + FETCH_MORE_THRESHOLD >=
       document.documentElement.scrollHeight
