@@ -1,4 +1,5 @@
 import fetch from "cross-fetch";
+import { State } from "./reducers";
 
 export const REQUEST_TRENDING = "REQUEST_TRENDING";
 function requestTrending() {
@@ -12,17 +13,27 @@ function receiveTrending(json) {
   return {
     type: RECEIVE_TRENDING,
     gifs: json.data,
-    offset: json.pagination.offset + json.pagination.count
+    offset: json.pagination.offset + json.pagination.count,
+    totalCount: json.pagination.total_count
   };
 }
 
 export function fetchGifs(): any {
   return function(dispatch, getState) {
-    const limit = 100;
-    const state = getState();
+    const state: State = getState();
 
-    if (state.isFetching) {
-      return false;
+    if (state.gifs.isFetching) {
+      return;
+    }
+
+    let limit = 100;
+    const totalCount = state.gifs.totalCount;
+    if (totalCount) {
+      if (state.gifs.offset >= totalCount) {
+        return;
+      } else if (state.gifs.offset + limit > totalCount) {
+        limit = totalCount - state.gifs.offset;
+      }
     }
 
     dispatch(requestTrending());

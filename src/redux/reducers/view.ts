@@ -1,6 +1,6 @@
 import { OPEN_FULL_SCREEN, CLOSE_FULL_SCREEN } from "../actions";
 
-type State = {
+export type State = {
   fullScreen: boolean;
   index: number | null;
 };
