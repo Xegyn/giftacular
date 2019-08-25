@@ -1,17 +1,24 @@
 import fetch from "cross-fetch";
 import { State } from "./reducers";
 
-export const REQUEST_TRENDING = "REQUEST_TRENDING";
-function requestTrending() {
+export const REQUEST_GIFS = "REQUEST_GIFS";
+function requestGifs() {
   return {
-    type: REQUEST_TRENDING
+    type: REQUEST_GIFS
   };
 }
 
-export const RECEIVE_TRENDING = "RECEIVE_TRENDING";
-function receiveTrending(json) {
+export const ERROR_GIFS = "ERROR_GIFS";
+function errorGifs() {
   return {
-    type: RECEIVE_TRENDING,
+    type: ERROR_GIFS
+  };
+}
+
+export const RECEIVE_GIFS = "RECEIVE_GIFS";
+function receiveGifs(json) {
+  return {
+    type: RECEIVE_GIFS,
     gifs: json.data,
     offset: json.pagination.offset + json.pagination.count,
     totalCount: json.pagination.total_count
@@ -36,7 +43,7 @@ export function fetchGifs(): any {
       }
     }
 
-    dispatch(requestTrending());
+    dispatch(requestGifs());
 
     const offset = state.gifs.offset;
     const searching = state.gifs.searchString.length > 0;
@@ -52,9 +59,17 @@ export function fetchGifs(): any {
     const url = `${baseUrl}?${params}`;
 
     return fetch(url)
-      .then(response => response.json())
       .then(response => {
-        dispatch(receiveTrending(response));
+        if (!response.ok) {
+          throw Error("API request failed.");
+        }
+        return response.json();
+      })
+      .then(response => {
+        dispatch(receiveGifs(response));
+      })
+      .catch(error => {
+        dispatch(errorGifs());
       });
   };
 }
