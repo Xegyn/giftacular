@@ -1,6 +1,7 @@
 import debounce from "lodash-es/debounce";
 import React from "react";
 import { connect } from "react-redux";
+import { State } from "./redux/reducers";
 import FullScreenGif from "./components/FullScreenGif";
 import Gallery from "./components/Gallery";
 import Navbar from "./components/Navbar";
@@ -8,7 +9,7 @@ import Spinner from "./components/Spinner";
 import { fetchGifs } from "./redux/actions";
 import store from "./redux/store";
 
-type Props = {
+type AppProps = {
   isFetching: boolean;
   fullScreen: boolean;
   fullScreenGif: any;
@@ -17,7 +18,7 @@ type Props = {
 const FETCH_MORE_THRESHOLD = 500;
 
 class App extends React.Component {
-  constructor(public props: Props) {
+  constructor(public props: AppProps) {
     super(props);
 
     this.dispatchFetchGifs = debounce(this.dispatchFetchGifs, 400, { leading: true, trailing: false });
@@ -59,8 +60,8 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
-  let fullScreenGif = null;
+const mapStateToProps = (state: State): AppProps => {
+  let fullScreenGif: number | null = null;
 
   if (state.view.index != null) {
     fullScreenGif = state.gifs.items[state.view.index];
