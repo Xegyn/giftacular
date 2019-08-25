@@ -56,11 +56,7 @@ class Navbar extends React.Component {
             onChange={this.handleChange}
             onKeyPress={this.handleKeyPress}
           />
-          <button
-            type="button"
-            className="search-button btn b-0"
-            onClick={this.searchGifs}
-          >
+          <button type="button" className="search-button btn b-0" onClick={this.searchGifs}>
             Search
           </button>
         </div>

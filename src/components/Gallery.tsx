@@ -12,14 +12,7 @@ const Gallery: React.FC<GalleryProps> = ({ gifs }: GalleryProps) => {
     <div className="container">
       <div className={styles.gallery}>
         {gifs.map((gif, index) => {
-          return (
-            <Gif
-              key={index}
-              index={index}
-              url={gif.images.preview_gif.url}
-              alt={gif.title}
-            />
-          );
+          return <Gif key={index} index={index} url={gif.images.preview_gif.url} alt={gif.title} />;
         })}
       </div>
     </div>

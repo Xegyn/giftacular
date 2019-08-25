@@ -7,9 +7,7 @@ type FullScreenGifProps = {
   gif: any;
 };
 
-const FullScreenGif: React.FC<FullScreenGifProps> = ({
-  gif
-}: FullScreenGifProps) => {
+const FullScreenGif: React.FC<FullScreenGifProps> = ({ gif }: FullScreenGifProps) => {
   return (
     <div className="container">
       <button
@@ -19,11 +17,7 @@ const FullScreenGif: React.FC<FullScreenGifProps> = ({
       >
         &lt; Back
       </button>
-      <img
-        src={gif.images.original.url}
-        alt={gif.title}
-        className={styles.image}
-      />
+      <img src={gif.images.original.url} alt={gif.title} className={styles.image} />
     </div>
   );
 };

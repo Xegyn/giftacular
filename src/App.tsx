@@ -38,9 +38,7 @@ class App extends React.Component {
     }
 
     return (
-      window.innerHeight +
-        document.documentElement.scrollTop +
-        FETCH_MORE_THRESHOLD >=
+      window.innerHeight + document.documentElement.scrollTop + FETCH_MORE_THRESHOLD >=
       document.documentElement.scrollHeight
     );
   }
@@ -50,11 +48,7 @@ class App extends React.Component {
       <div className="App">
         <Navbar />
         <main>
-          {this.props.fullScreen ? (
-            <FullScreenGif gif={this.props.fullScreenGif} />
-          ) : (
-            <Gallery />
-          )}
+          {this.props.fullScreen ? <FullScreenGif gif={this.props.fullScreenGif} /> : <Gallery />}
           {this.props.isFetching && <Spinner />}
         </main>
       </div>
