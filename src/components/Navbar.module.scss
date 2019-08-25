@@ -20,9 +20,14 @@
       }
     }
 
-    :global(.logo) {
+    :global(.logo),
+    :global(.attribution) {
       display: flex;
       align-items: center;
+    }
+
+    :global(.attribution) {
+      margin-left: auto;
     }
 
     :global(.search-text) {

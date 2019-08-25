@@ -59,6 +59,9 @@ class Navbar extends React.Component {
           <button type="button" className="search-button btn b-0" onClick={this.searchGifs}>
             Search
           </button>
+          <div className="attribution">
+            <img src="./giphy.png" alt="Powered by Giphy" />
+          </div>
         </div>
       </div>
     );
