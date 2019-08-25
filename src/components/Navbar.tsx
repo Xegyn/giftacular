@@ -43,27 +43,31 @@ class Navbar extends React.Component {
 
   render() {
     return (
-      <div className={styles.navbar}>
-        <div className="container">
-          <div className="logo">
-            <h4 className="m-0">Giftacular</h4>
+      <header>
+        <nav>
+          <div className={styles.navbar}>
+            <div className="container">
+              <div className="logo">
+                <h4 className="m-0">Giftacular</h4>
+              </div>
+              <input
+                type="search"
+                className="search-text control b-0"
+                placeholder="Search for..."
+                value={this.state.searchString}
+                onChange={this.handleChange}
+                onKeyPress={this.handleKeyPress}
+              />
+              <button type="button" className="search-button btn b-0" onClick={this.searchGifs}>
+                Search
+              </button>
+              <div className="attribution">
+                <img src="./giphy.png" alt="Powered by Giphy" />
+              </div>
+            </div>
           </div>
-          <input
-            type="text"
-            className="search-text control b-0"
-            placeholder="Search for..."
-            value={this.state.searchString}
-            onChange={this.handleChange}
-            onKeyPress={this.handleKeyPress}
-          />
-          <button type="button" className="search-button btn b-0" onClick={this.searchGifs}>
-            Search
-          </button>
-          <div className="attribution">
-            <img src="./giphy.png" alt="Powered by Giphy" />
-          </div>
-        </div>
-      </div>
+        </nav>
+      </header>
     );
   }
 }

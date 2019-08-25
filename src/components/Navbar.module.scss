@@ -42,6 +42,9 @@
       padding-left: $spacer-sm;
       padding-right: $spacer-sm;
       width: 150px;
+      height: 2rem;
+      appearance: textfield;
+      align-self: center;
 
       @media (max-width: 640px) {
         width: 100px;

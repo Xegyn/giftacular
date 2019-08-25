@@ -11,6 +11,7 @@ const FullScreenGif: React.FC<FullScreenGifProps> = ({ gif }: FullScreenGifProps
   return (
     <div className="container">
       <button
+        autoFocus
         type="button"
         className={`${styles["back-button"]} btn`}
         onClick={() => store.dispatch(closeFullScreen())}
