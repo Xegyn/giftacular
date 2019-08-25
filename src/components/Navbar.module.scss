@@ -28,6 +28,12 @@
 
     :global(.attribution) {
       margin-left: auto;
+      @media (max-width: 640px) {
+        width: 50px;
+      }
+      img {
+        max-width: 100%;
+      }
     }
 
     :global(.search-text) {
@@ -35,6 +41,11 @@
       margin-bottom: $spacer;
       padding-left: $spacer-sm;
       padding-right: $spacer-sm;
+      width: 150px;
+
+      @media (max-width: 640px) {
+        width: 100px;
+      }
     }
 
     :global(.search-button) {
