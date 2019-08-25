@@ -41,10 +41,8 @@ class App extends React.Component {
   }
 
   shouldFetchGifs() {
-    return (
-      window.innerHeight + document.documentElement.scrollTop + FETCH_MORE_THRESHOLD >=
-      document.documentElement.scrollHeight
-    );
+    const scrollTop = Math.max(window.pageYOffset, document.documentElement.scrollTop, document.body.scrollTop);
+    return window.innerHeight + scrollTop + FETCH_MORE_THRESHOLD >= document.documentElement.scrollHeight;
   }
 
   render() {
